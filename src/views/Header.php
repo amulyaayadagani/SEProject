@@ -19,6 +19,9 @@
                      <div class="col-md-6 mx-auto">
                         <ul class="list-unstyled menu" id="header-menu">
                            <li class="active"><a href="index.php?page=search">Home</a></li>
+                           <li ><a href="index.php?page=login">Login</a></li>
+                           <li ><a href="index.php?page=registration">Registration</a></li>
+                           <li><a href="index.php?page=rooms">Rooms</a></li>
                            <li><a href="reservation.html">Lookup Reservation</a></li>
                            <li><a href="index.php?page=about">About</a></li>
                         </ul>
@@ -39,7 +42,7 @@
             <span class="custom-caption text-uppercase text-white d-block  mb-3">Welcome To 5 <span class="fa fa-star text-primary"></span>   Hotel</span>         
             <?php 
                $page = ( isset($_GET['page']) ) ? $_GET['page'] : 'search';
-               $pageContent = array("search"=>"Best Place to stay", "rooms"=>"Room Details", "reservation"=>"Reservation", "about" => "About");
+               $pageContent = array("search"=>"Best Place to stay", "rooms"=>"Room Details", "reservation"=>"Reservation", "about" => "About","registration"=>"registration");
                
                
                echo "<h1 class='heading'>". $pageContent[$page] ."</h1>";
