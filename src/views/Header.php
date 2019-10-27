@@ -19,7 +19,6 @@
                      <div class="col-md-6 mx-auto">
                         <ul class="list-unstyled menu" id="header-menu">
                            <li class="active"><a href="index.php?page=search">Home</a></li>
-                           <li><a href="index.php?page=rooms">Rooms</a></li>
                            <li><a href="reservation.html">Lookup Reservation</a></li>
                            <li><a href="index.php?page=about">About</a></li>
                         </ul>
