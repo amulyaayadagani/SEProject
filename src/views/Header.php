@@ -45,9 +45,16 @@
             <?php 
                $page = ( isset($_GET['page']) ) ? $_GET['page'] : 'search';
 <<<<<<< HEAD
+<<<<<<< HEAD
                $pageContent = array("search"=>"Best Place to stay", "rooms"=>"Room Details", "reservation"=>"Reservation", "about" => "About","registration"=>"registration");
 =======
                $pageContent = array("search"=>"Best Place to stay", "rooms"=>"Room Details", "reservation"=>"Reservation","admin"=>"Administration");
+>>>>>>> ritubranch
+=======
+               $pageContent = array("search"=>"Best Place to stay", "rooms"=>"Room Details", "reservation"=>"Reservation","admin"=>"Administration");
+=======
+               $pageContent = array("search"=>"Best Place to stay", "rooms"=>"Room Details", "reservation"=>"Reservation", "about" => "About","registration"=>"registration");
+>>>>>>> 333a2ec1dd5c522e826d5518a4823866232ee7f8
 >>>>>>> ritubranch
                
                
