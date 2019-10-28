@@ -22,8 +22,8 @@
                            <li ><a href="index.php?page=login">Login</a></li>
                            <li ><a href="index.php?page=registration">Registration</a></li>
                            <li><a href="reservation.html">Lookup Reservation</a></li>
-                           <li><a href="index.php?page=about">About</a></li>
                            <li><a href="index.php?page=admin">Admin</a></li>
+                           <li><a href="index.php?page=about">About</a></li>
                         </ul>
                         </div>
                      </div>
