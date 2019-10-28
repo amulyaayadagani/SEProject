@@ -44,7 +44,7 @@
             <span class="custom-caption text-uppercase text-white d-block  mb-3">Welcome To 5 <span class="fa fa-star text-primary"></span>   Hotel</span>         
             <?php 
                $page = ( isset($_GET['page']) ) ? $_GET['page'] : 'search';
-               $pageContent = array("search"=>"Best Place to stay", "rooms"=>"Room Details", "reservation"=>"Reservation", "about" => "About","registration"=>"registration","admin"=>"Administration","login"=>"login");               
+               $pageContent = array("search"=>"Best Place to stay", "rooms"=>"Room Details", "reservation"=>"Reservation", "about" => "About","registration"=>"Registration","admin"=>"Administration","login"=>"Login");               
                echo "<h1 class='heading'>". $pageContent[$page] ."</h1>";
                ?>
          </div>
