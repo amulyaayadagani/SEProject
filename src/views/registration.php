@@ -81,7 +81,7 @@
                 <div class="col-md-6 form-group">
                   <!-- <input type="submit" value="Register" class="btn btn-primary text-white py-3 px-5 font-weight-bold"> -->
                   <button type="submit" value="Register" class="btn btn-primary text-white py-3 px-5 font-weight-bold">
-                  <a href="search.php?page=search" class="text-white "> Register</a>
+                  <a href="index.php?page=search" class="text-white "> Register</a>
                   </button>
                 </div>
               </div>
