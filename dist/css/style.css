@@ -38,7 +38,9 @@ h1, h2, h3, h4, h5 {
 
 .container-fluid {
   max-width: 1600px; }
-
+.selected {
+    background-color: #E8E8E8;
+}
 .btn {
   padding-left: 30px;
   padding-right: 30px;

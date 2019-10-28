@@ -1,5 +1,5 @@
 <!DOCTYPE HTML>
-<?php require "./controllers/roomsController.php"; ?>
+<?php require "./controllers/roomsController.php";?>
 <html>
    <head>
       <meta charset="utf-8">
