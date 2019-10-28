@@ -6,7 +6,7 @@
    // include('./controllers/indexController.php');
    // include('./views/rooms.php');
 
-    $allowed = array('search','rooms','reservation','admin'); // add the pagenames you need
+  $allowed = array('search','rooms','reservation','about','registration','admin'); // add the pagenames you need
 	$page = ( isset($_GET['page']) ) ? $_GET['page'] : 'search';
     
 	if (in_array($page, $allowed) ) {
