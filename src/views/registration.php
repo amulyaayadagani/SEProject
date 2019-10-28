@@ -52,7 +52,7 @@
               <div class="row">
                 <div class="col-md-12 form-group">
                   <label class="text-black font-weight-bold" for="customertype">Customer Type</label>
-                  <input type="text" id="C_Type" name="C_Type" class="form-control" placeholder="Customer Type" required>
+                  <input type="text" id="C_Type" name="C_Type" class="form-control" placeholder="Customer Type">
                 </div>
               </div>
 
@@ -66,7 +66,7 @@
               <div class="row">
                 <div class="col-md-12 form-group">
                   <label class="text-black font-weight-bold" for="customeridnumber">Customer Id Number </label>
-                  <input type="text" id="C_id_Number" name="C_id_Proof_Type" class="form-control" placeholder="Customer Id Number" required>
+                  <input type="text" id="C_id_Number" name="C_id_Proof_Type" class="form-control" placeholder="Customer Id Number" >
                 </div>
               </div>
               
