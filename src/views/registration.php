@@ -16,7 +16,7 @@
                 </div>
 				<div class="col-md-4 form-group">
                   <label class="text-black font-weight-bold" for="customerlname">Last Name</label>
-                  <input type="text" id="C_LName" name="C_FName" class="form-control" placeholder="Last Name" required>
+                  <input type="text" id="C_LName" name="C_FName" class="form-control" placeholder="Last Name" >
                 </div>
               </div>
              
@@ -59,7 +59,7 @@
               <div class="row">
                 <div class="col-md-12 form-group">
                   <label class="text-black font-weight-bold" for="customerprooftype">Proof Type </label>
-                  <input type="text" id="C_id_Proof_Type" name="C_id_Proof_Type" class="form-control" placeholder="Proof Type" required>
+                  <input type="text" id="C_id_Proof_Type" name="C_id_Proof_Type" class="form-control" placeholder="Proof Type" >
                 </div>
               </div>
 
@@ -70,11 +70,7 @@
                 </div>
               </div>
               
-              <div class="row">
-                <div class="col-md-12 form-group">
-                  <label class="text-black font-weight-bold" for="customeridnumber">Customer Points </label>
-                  <input type="text" id="C_Points" name="C_Points" class="form-control" placeholder="Customer Points" required>
-                </div>
+              
               </div>
              
               <div class="row">
