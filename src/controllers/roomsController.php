@@ -40,6 +40,7 @@ if (isset($_POST['checkin_date']) && isset($_POST['checkout_date']) && isset($_P
             
             if (!$result) {
                 trigger_error('Invalid query: ' . $conn->error);
+                //echo "not result";
             }
             if ($result->num_rows > 0) {
                 // output data of each row
@@ -48,7 +49,9 @@ if (isset($_POST['checkin_date']) && isset($_POST['checkout_date']) && isset($_P
                     
                 }
             } else {
-                echo "0 results";
+                //echo "not result availabile";
+                $availableCount = 0;
+                //echo "0 results";
             }
             
             $conn->close();

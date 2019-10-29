@@ -1,2 +1,2 @@
-<h3>notifications</h3>
-          
+
+<h3>Notifications</h3>
