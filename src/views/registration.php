@@ -12,7 +12,7 @@
                 </div>
 				 <div class="col-md-4 form-group">
                   <label class="text-black font-weight-bold" for="customermname">Middle Name</label>
-                  <input type="text" id="C_MName" name="C_FName" class="form-control" placeholder="Middle Name">
+                  <input type="text" id="C_MName" name="C_FName" class="form-control" placeholder="Middle Name here">
                 </div>
 				<div class="col-md-4 form-group">
                   <label class="text-black font-weight-bold" for="customerlname">Last Name</label>
