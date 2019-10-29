@@ -1,7 +1,7 @@
 <header class="site-header js-site-header">
    <div class="container-fluid">
    <div class="row align-items-center">
-      <div class="col-6 col-lg-4 site-logo" data-aos="fade"><a href="index.html">Hotel</a></div>
+      <div class="col-6 col-lg-4 site-logo" data-aos="fade"><a href="index.html">PARRK Hotel</a></div>
       <div class="col-6 col-lg-8">
          <!-- <div class="site-login-toggle js-site-login-toggle" data-aos="fade">
             <i class="fas fa-user"></i>
