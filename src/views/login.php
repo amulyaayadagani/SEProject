@@ -23,7 +23,7 @@
                   <!-- <input type="submit" value="Login" class="btn btn-primary text-white py-3 px-5 font-weight-bold"> -->
                
                   <button type="submit" value="Register" class="btn btn-primary text-white py-3 px-5 font-weight-bold">
-                  <a href="index.php?page=search" class="text-white "> Login</a>
+                  <a href="index.php?page=search" class="text-white ">Login</a>
                   </button>
                   
                 </div>
