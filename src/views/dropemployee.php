@@ -1,5 +1,4 @@
-<h4>Employees</h4>
-  <table border="1">
+  <table class="table table-bordered">
     <thead>
       <tr class="row100 head">
         <th class="cell100 column1">Employee Name</th>
