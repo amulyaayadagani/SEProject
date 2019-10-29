@@ -3,7 +3,7 @@
       <!-- <div class="row justify-content-center text-center mb-5">
          <div class="col-md-7">
             <h2 class="heading" data-aos="fade">Great Offers</h2>
-            <p data-aos="fade">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.</p>
+            <p data-aos="fade">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics and a large language ocean.</p>
          </div>
       </div> -->
       <div class="site-block-half d-block d-lg-flex bg-white" data-aos="fade" data-aos-delay="100">
