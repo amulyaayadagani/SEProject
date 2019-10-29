@@ -15,6 +15,7 @@
             <p>Rooms include hot breakfast buffet, free high speed Internet and free shuttle within a 5 mile radius of hotel.</p>
             <p>Availability of Rooms - <?php echo $availableCount . '/' . $Num_of_Rooms;?></p>
             <p><a href="#" class="btn btn-primary text-white">Book Now</a></p>
+            <p><?php if($availableCount=0){echo 'Predective Analysis'}?></p>
          </div>
       </div>
    </div>
