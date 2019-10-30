@@ -22,24 +22,23 @@
              
             
               <div class="row">
-                <div class="col-md-12 form-group">
+                <div class="col-md-6 form-group">
                   <label class="text-black font-weight-bold" for="customerdob">DOB</label>
                   <input type="date" id="C_DOB" name="C_DOB" class="form-control" placeholder="Date of Birth" required>
+                </div>
+                <div class="col-md-6 form-group">
+                  <label class="text-black font-weight-bold" for="Contact">Contact</label>
+                  <input type="text" id="C_Contact" name="C_Contact"class="form-control" required>
                 </div>
               </div>
               <div class="row mb-4">
                 <div class="col-md-12 form-group">
                   <label class="text-black font-weight-bold" for="address">Address</label>
-                  <textarea name="C_Address" id="C_Address" class="form-control " cols="30" rows="8"></textarea>
+                  <textarea name="C_Address" id="C_Address" class="form-control " cols="30" rows="5"></textarea>
                 </div>
               </div>
               
-              <div class="row">
-                <div class="col-md-12 form-group">
-                  <label class="text-black font-weight-bold" for="Contact">Contact</label>
-                  <input type="text" id="C_Contact" name="C_Contact"class="form-control" required>
-                </div>
-              </div>
+            
 
               <div class="row">
                 <div class="col-md-12 form-group">
@@ -50,28 +49,46 @@
 
 
               <div class="row">
-                <div class="col-md-12 form-group">
+                <div class="col-md-6 form-group">
                   <label class="text-black font-weight-bold" for="customertype">Customer Type</label>
-                  <input type="text" id="C_Type" name="C_Type" class="form-control" placeholder="Customer Type">
+                  <!-- <input type="text" id="C_Type" name="C_Type" class="form-control" placeholder="Customer Type"> -->
+                  <select id="C_Type" name="C_Type" class="form-control" placeholder="Customer Type">
+                  <option value="">Select Customer Type</option>
+                  <option value="GUEST">Guest</option>
+                  <option value="MEMBER">Member</option>
+                  </select>
+                </div>
+                <div class="col-md-6 form-group">
+                  <label class="text-black font-weight-bold" for="customerprooftype">Identification Id Type </label>
+                  <!-- <input type="text" id="C_id_Proof_Type" name="C_id_Proof_Type" class="form-control" placeholder="Identification Id Type" > -->
+                  
+                  <select id="C_id_Proof_Type" name="C_id_Proof_Type" class="form-control" required placeholder="Identification Id Type" >
+                  <option value="">Select Identification Id Type</option>
+                  <option value="PASSPORT">Passport</option>
+                  <option value="DRIVINGLICENCE">Driving Licence</option>
+                  </select>
                 </div>
               </div>
 
-              <div class="row">
-                <div class="col-md-12 form-group">
-                  <label class="text-black font-weight-bold" for="customerprooftype">Proof Type </label>
-                  <input type="text" id="C_id_Proof_Type" name="C_id_Proof_Type" class="form-control" placeholder="Proof Type" >
-                </div>
-              </div>
+             
 
               <div class="row">
                 <div class="col-md-12 form-group">
-                  <label class="text-black font-weight-bold" for="customeridnumber">Customer Id Number </label>
-                  <input type="text" id="C_id_Number" name="C_id_Proof_Type" class="form-control" placeholder="Customer Id Number" >
+                  <label class="text-black font-weight-bold" for="customeridnumber">Identification Id Number </label>
+                  <input type="text" id="C_id_Number" name="C_id_Proof_Type" class="form-control" required placeholder="Identification Id Number" >
                 </div>
               </div>
+
               
-              
+              <div class="row">
+                <div class="col-md-12 form-group">
+                  <label class="text-black font-weight-bold" for=userpassword>User Password </label>
+                  <input type="password" id="C_userpassword" name="C_userpassword" class="form-control" placeholder="User Password" >
+                </div>
               </div>
+
+              
+              
              
               <div class="row">
                 <div class="col-md-6 form-group">
