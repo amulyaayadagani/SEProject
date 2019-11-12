@@ -21,7 +21,7 @@
                   <input type="text" id="emp_lname" class="form-control " required>
                 </div>                  
               </div>
-              <div class="row">
+              <div class="row" diabled=true>
                 <div class="col-md-4 form-radio">
                   <label for="gender" class="radio-label">Gender :</label>
                   <div class="form-radio-item">
@@ -83,7 +83,7 @@
             </div>
             <div class="row">
               <div class="col-md-6 form-group">
-                <input type="submit" value="Save " class="btn btn-primary text-white font-weight-bold">
+                <input type="submit" value="Save" class="btn btn-primary text-white font-weight-bold">
               </div>
             </div>
             </form>
