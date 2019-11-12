@@ -47,10 +47,10 @@
     // output data of each row
         while($row = $result->fetch_assoc()) {
             //echo $row["E_FName"];
-          $fname = $row["E_FName"];
-          $mname = $row["E_MName"];
-          $lname = $row["E_LName"];
-          $id    = $row["E_Id"];
+          $fname = $_SESSION["user_type"] == "Admin"?$row["E_FName"]:$row["C_FName"];
+          $mname = $_SESSION["user_type"] == "Admin"?$row["E_MName"]:$row["C_MName"];
+          $lname = $_SESSION["user_type"] == "Admin"?$row["E_LName"]:$row["C_LName"];
+          $id    = $_SESSION["user_type"] == "Admin"?$row["E_Id"]:$row["C_Id"];
           $dob   = $row["DOB"];
           $gender= $row["gender"];
           $contact= $row["Contact"];

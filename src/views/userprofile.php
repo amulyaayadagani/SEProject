@@ -100,7 +100,7 @@
     });
 </script>
 <?php
-print_r($_POST);
+//print_r($_POST);
 if(array_key_exists('updateProfile', $_POST)) { 
     updateProfile($_SESSION["user_id"],$_POST["usr_fname"],$_POST["usr_mname"],$_POST["usr_lname"],$_POST["usr_gender"],$_POST["usr_birth_date"],$_POST["usr_phone"],$_POST["usr_address"],$_POST["usr_email"]); 
 } 
@@ -114,7 +114,7 @@ function updateProfile($usrId, $fname, $mname, $lname,$gender, $dob,$contact,$ad
     if($usr_type == "Admin"){
       $sql = "Update Employee set E_FName = '" . $fname . "',E_MName ='" . $mname . "',E_LName='" . $lname . "',DOB='" . $dob . "',Contact=" . $contact . ",Address='" . $address . "',email='" . $email . "',gender='" . $gender . "' where E_Id=" . $usrId;
     }else{
-      $sql = "SELECT E_FName,E_MName,E_LName,E_Id,Dept_Name,DOB,E_Id,Contact,E_Start_Date from employee where emp_status = 'Active'";
+      $sql = "Update Customer set C_FName = '" . $fname . "',C_MName ='" . $mname . "',C_LName='" . $lname . "',DOB='" . $dob . "',Contact=" . $contact . ",Address='" . $address . "',email='" . $email . "',gender='" . $gender . "' where C_Id=" . $usrId;
     }
     //echo $sql;
     if ($conn->query($sql)) {
