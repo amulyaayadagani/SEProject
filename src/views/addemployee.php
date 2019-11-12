@@ -99,6 +99,7 @@
     {
       //echo "inside";
       $conn = mysqli_connect("localhost", "root", "", "CRMDB_SE");
+      
       // Check connection
       if ($conn->connect_error) {
         die("Connection failed: " . $conn->connect_error);
