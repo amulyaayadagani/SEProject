@@ -1,7 +1,10 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 <h3>Notifications</h3>
 =======
+=======
+>>>>>>> ritub3
     <div id="success_msg" class="alert alert-success alert-dismissible" style="visibility: hidden" >
 	  <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
 	  <strong>Success!</strong> Messages selected successfully.
@@ -81,4 +84,7 @@
 	      
 	    </script>
 
+<<<<<<< HEAD
+>>>>>>> ritub3
+=======
 >>>>>>> ritub3
