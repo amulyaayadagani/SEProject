@@ -1,4 +1,5 @@
 <!DOCTYPE HTML>
+<?php require "./controllers/loginController.php";?>
 <?php require "./controllers/roomsController.php";?>
 <html>
    <head>
@@ -40,5 +41,6 @@
       <script src="../dist/js/jquery.timepicker.min.js"></script> 
       <script src="../dist/js/main.js"></script>
       <script src="./main.js"></script>
+      <script src="bootstrap-auto-dismiss-alert.js"></script>
    </body>
 </html>

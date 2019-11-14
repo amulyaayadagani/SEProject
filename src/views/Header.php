@@ -1,11 +1,11 @@
+<?php session_start(); ?>
+
 <header class="site-header js-site-header">
    <div class="container-fluid">
    <div class="row align-items-center">
-      <div class="col-6 col-lg-4 site-logo" data-aos="fade"><a href="index.html">PARRK Hotel</a></div>
-      <div class="col-6 col-lg-8">
-         <!-- <div class="site-login-toggle js-site-login-toggle" data-aos="fade">
-            <i class="fas fa-user"></i>
-            </div> -->
+      <div class="col-6 col-lg-4 site-logo" data-aos="fade"><a href="index.php?page=search">PARRK Hotel</a></div>
+       <div class="col-5 col-lg-7 site-logo" data-aos="fade"><a style="float:right" href="index.php?page=search" ><?php  if(!empty($_SESSION["First_Name"])) { echo $_SESSION["First_Name"]; } ?></a></div>
+      <div class="col-1 col-lg-1">
          <div class="site-menu-toggle js-site-menu-toggle"  data-aos="fade">
             <span></span>
             <span></span>
@@ -21,9 +21,14 @@
                            <li class="active"><a href="index.php?page=search">Home</a></li>
                            <li ><a href="index.php?page=login">Login</a></li>
                            <li ><a href="index.php?page=registration">Registration</a></li>
-                           <li><a href="index.php?page=ModifyReservation">Lookup Reservation</a></li>
+                           <?php if(isset($_SESSION['user_id'])) : ?>
+                              <li><a href="index.php?page=ModifyReservation">Lookup Reservation</a></li>
                            <li><a href="index.php?page=admin">Admin</a></li>
+                           <?php endif; ?>
                            <li><a href="index.php?page=about">About</a></li>
+                           <?php if(isset($_SESSION['user_id'])) : ?>
+                           <li><a href="index.php?logout=true">Logout</a></li>
+                           <?php endif; ?>
                         </ul>
                         </div>
                      </div>
@@ -49,3 +54,14 @@
       </div>
    </div>
 </section>
+
+<?php
+if(isset($_GET['logout'])){
+   logout();
+}
+
+function logout(){
+   session_unset();
+   header("Location: index.php?page=search");
+}
+?>

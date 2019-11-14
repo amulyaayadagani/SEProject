@@ -15,7 +15,7 @@
               <div class="row">
                 <div class="col-md-12 form-group">
                   <label class="text-black font-weight-bold" for="password">Password</label>
-                  <input type="password" id="userpassword" placeholder="Enter Password" class="form-control" required>
+                  <input type="password" id="userpassword" name="userpassword" placeholder="Enter Password" class="form-control" required>
                 </div>
               </div>
               <div class="row">
@@ -23,7 +23,7 @@
                   <!-- <input type="submit" value="Login" class="btn btn-primary text-white py-3 px-5 font-weight-bold"> -->
                
                   <button type="submit" value="Register" class="btn btn-primary text-white py-3 px-5 font-weight-bold">
-                  <a href="index.php?page=search" class="text-white ">Login</a>
+                  <a class="text-white ">Login</a>
                   </button>
                   
                 </div>

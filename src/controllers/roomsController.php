@@ -29,8 +29,16 @@ if (isset($_POST['checkin_date']) && isset($_POST['checkout_date']) && isset($_P
                     $Room_Description = $row["Room_Description"];
                     $Num_of_Rooms     = $row["Num_of_Rooms"];
                     $Num_of_Beds      = $row["Num_of_Beds"];
-                    $Price            = $row["Price"] . '$';
+                    $Price            = $row["Price"];
                 }
+                $_SESSION["Room_Id"] = $Room_Id;
+                $_SESSION["RoomType"] = $RoomType;
+                $_SESSION["Room_Description"] = $Room_Description;
+                $_SESSION["Price"] = $Price;
+                $_SESSION["checkin_date"] = $checkin_date;
+                $_SESSION["checkout_date"] = $checkout_date;
+                $_SESSION["reservation_date"] = date("Y-m-d");
+                $_SESSION["Room_Num"] = 0;
             } else {
                 echo "0 results";
             }
@@ -48,12 +56,31 @@ if (isset($_POST['checkin_date']) && isset($_POST['checkout_date']) && isset($_P
                     $availableCount = $row["COUNT(*)"];
                     
                 }
+
+                $roomNumSql    = "SELECT *FROM RoomAvailability where Room_Id = $room_type and status = 'Available' order by Room_Num LIMIT 1";
+                $roomNumResult = $conn->query($roomNumSql);
+                if (!$roomNumResult) {
+                    trigger_error('Invalid query: ' . $conn->error);
+                }
+                
+                if ($roomNumResult->num_rows > 0) {
+                    // output data of each row
+                    while ($row = $roomNumResult->fetch_assoc()) {
+                        $Room_Id          = $row["Room_Id"];
+                        $Room_Num         = $row["Room_Num"];
+                    }
+
+                    $_SESSION["Room_Num"] = $Room_Num;
+
+                } else {
+                    echo "0 results";
+                }
+
+
             } else {
-                //echo "not result availabile";
                 $availableCount = 0;
-                //echo "0 results";
             }
-            
+            $_SESSION["available_count"] = $availableCount;
             $conn->close();
         }
     }
