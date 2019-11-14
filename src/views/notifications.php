@@ -1,10 +1,4 @@
-<<<<<<< HEAD
-<<<<<<< HEAD
 
-<h3>Notifications</h3>
-=======
-=======
->>>>>>> ritub3
     <div id="success_msg" class="alert alert-success alert-dismissible" style="visibility: hidden" >
 	  <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
 	  <strong>Success!</strong> Messages selected successfully.
@@ -56,13 +50,24 @@
 				echo $del_sql;
 				if($conn->query($del_sql))
 				{
-				   echo "<script> alert('Message deleted successfully')</script>";
+				   //echo "<script> alert('Message deleted successfully')</script>";
+					echo '<div class="alert alert-success alert-dismissible fade in" id="success-alert" data-auto-dismiss="200">
+				        <button type="button" class="close" data-dismiss="alert">x</button>
+				        <strong>Success! </strong> Selected message deleted successfully.
+				        </div>';
+				        $_SESSION["default_tab"] = "notifications";
 				}
 				else{
-				   echo "Error deleting message: " . $conn->error;
+				   //echo "Error deleting message: " . $conn->error;
+					echo '<div class="alert alert-danger alert-dismissible fade in" id="error-alert" data-auto-dismiss="200">
+				          <button type="button" class="close" data-dismiss="alert">x</button>
+				          <strong>Error! </strong> Error deleting message."' . $conn->error .'"' .
+				          '. Try deleting again after some time.</div>';
+				          $_SESSION["default_tab"] = "notifications";
 				}
 		  	}
 		  	$conn->close();
+		  	//$_SESSION["default_tab"] = "notifications"; 
 		?>
 	    <script language="javascript">
 	    	$('#del_btn').click(function() {    
@@ -83,8 +88,3 @@
 	      });
 	      
 	    </script>
-
-<<<<<<< HEAD
->>>>>>> ritub3
-=======
->>>>>>> ritub3

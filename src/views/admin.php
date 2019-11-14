@@ -4,7 +4,15 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+<script src="bootstrap-auto-dismiss-alert.js"></script>
   <!--Ritu: Tab Style -->
+
+
+<!--<div class="alert alert-success alert-dismissible fade in" id="success-alert" data-auto-dismiss="200">
+  <button type="button" class="close" data-dismiss="alert">x</button>
+  <strong>Success! </strong> Product have added to your wishlist.
+</div>-->
+
 <section class="section testimonial-section" >
   <ul class="nav nav-tabs">
     <li class="active"><a data-toggle="tab" href="#user_profile">Profile</a></li>
@@ -31,6 +39,7 @@
     ?>
   </ul>
   <?php
+
     $conn = mysqli_connect("localhost", "root", "", "CRMDB_SE");
     // Check connection
     if ($conn->connect_error) {
@@ -56,6 +65,7 @@
           $contact= $row["Contact"];
           $address= $row["Address"];
           $email  = $row["Email"];
+          //$pass   = $row["Password"];
           //$city   = $row["City"];
           //$state  = $row["State"];
         }      
@@ -69,6 +79,7 @@
         $contact= "";
         $address= "";
         $email  = ""; 
+        //$pass   = "";
         //$city   = "";
         //$state  = "";
       }
@@ -76,33 +87,58 @@
   ?>
   <div class="container">
     <div class="tab-content">
-        <div id="user_profile" class="tab-pane fade in active">                
+        <div id="user_profile" name="user_profile" class="tab-pane fade in active">                
           <?php include 'userprofile.php';?>
         </div>
-        <div id="drop_emp" class="tab-pane fade"  >
+        <div id="drop_emp" name="drop_emp" class="tab-pane fade"  >
           <?php include 'dropemployee.php';?>
         </div>
-        <div id="add_emp" class="tab-pane fade">
+        <div id="add_emp" name="add_emp" class="tab-pane fade">
           <?php include 'addemployee.php';?>
         </div>
-        <div id="reports" class="tab-pane fade" >
+        <div id="reports" name="reports" class="tab-pane fade" >
           <?php include 'Report.php';?>
         </div>
-        <div id="notifications" class="tab-pane fade">
+        <div id="notifications" name="notifications" class="tab-pane fade">
           <?php include 'notifications.php';?>
         </div>
     </div>
   </div>
 </section> 
 <script language="javascript">
+  var tid = "";
   $('tr').click(function() {
      $('.selected').removeClass('selected');
       $(this).addClass('selected');
+      tid=$(this).attr('id');
   });
+  
+  $(document).ready(function(){
+      var tab = "<?php echo $_SESSION["default_tab"]; ?>";
+      ActivTab(tab);
+      
+   });
+  function ActivTab(id){
+    $('.nav-tabs a[href="#' + id + '"]').tab('show');
+       //$('.nav-tabs a[href="#' + id + '"]').trigger('click');
+  }; 
+
 
   $('#drop').click(function() {    
-      $('.selected').children().each(function() {
+      /*$('.selected').children().each(function() {
           alert($(this).html());
-      });
+      });*/
+      var name = $('.selected').find("td:eq(0)").text();
+        var empId = $('.selected').find("td:eq(1)").text();
+        alert(tid);
+
+        $confirm_var = confirm("Are you sure you want to delete employee '" + name + "' employee Id - '" + empId + "'?");
+
+        if($confirm_var){
+            $("#emp_id").val(empId);
+        }else{
+          $("#emp_id").val(NULL);
+        }
+        $("#" + tid).remove();
   });
 </script>

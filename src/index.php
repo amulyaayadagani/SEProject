@@ -9,6 +9,7 @@
   
   $_SESSION["user_id"] = "99887";
   $_SESSION["user_type"] = "Admin";
+  $_SESSION["default_tab"] = "user_profile";
   $allowed = array('search','rooms','ModifyReservation','about','registration','admin','login','reserve'); // add the pagenames you need
 	$page = ( isset($_GET['page']) ) ? $_GET['page'] : 'search';
     

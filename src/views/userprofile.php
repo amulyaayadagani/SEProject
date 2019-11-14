@@ -1,4 +1,5 @@
 <!--<section class="section " id="usr_next">-->
+
   <div class="container">
     <h3>User Profile</h3>
     <div class="row">
@@ -20,7 +21,7 @@
           </div>
           <div class="row">
             <div class="col-md-4 form-radio">
-              <label for="usr_gender" class="radio-label">Gender :</label>
+              <label for="usr_gender" class="radio-label">Gender </label>
               <div class="form-radio-item">
                   <input type="radio" name="usr_gender" id="usr_male" value="Male" >
                   <label for="usr_male">Male</label>
@@ -32,9 +33,18 @@
                   <span class="check"></span>
               </div>
             </div> 
-            <div class="form-group">
-                <label for="usr_birth_date">DOB :</label>
-                <input type="text" name="usr_birth_date" value = "<?php echo $dob;?>" id="usr_birth_date" required>
+            <div class="col-md-4 form-group">
+                <label for="usr_birth_date">Date of Birth</label>
+                <div class="field-icon-wrap">
+                        <div class="icon"><span class="icon-calendar"></span></div>
+                        <input autocomplete="off" required type="text" name="usr_birth_date" id="usr_birth_date" class="form-control" value = "<?php echo $dob;?>">
+                       
+                </div>
+                <!--<input type="text" class="form-control" name="usr_birth_date" value = "<?php echo $dob;?>" id="usr_birth_date" required>-->
+            </div>
+            <div class="col-md-4 form-group">
+                <label for="password">User Password </label>
+                <input type="password" name="u_password" id="u_password" class="form-control " values="<?php echo $pass ?>" >
             </div>                    
           </div>
           <div class="row">
@@ -51,7 +61,7 @@
           </div>
           <div class="row">
             <div class="col-md-12 form-group">
-              <label for="usr_address">Address :</label>
+              <label for="usr_address">Address </label>
               <input type="text" name="usr_address" id="usr_address" value = "<?php echo $address;?>" class="form-control" />
           </div>
         </div>
@@ -80,7 +90,7 @@
             </div>
           </div>
           <div class="row">
-            <div class="col-md-6 form-group">
+            <div class="col-md-6 form-group"><br>
               <input type="submit" name="updateProfile" value="Update Profile" class="btn btn-primary text-white font-weight-bold">
             </div>
           </div>
@@ -97,12 +107,18 @@
       }else{
         jQuery('#usr_female').attr('checked', true);
       }
+
+      $('#usr_birth_date').datepicker({
+        startDate: new Date(),
+        autoclose: true,
+      });
     });
 </script>
 <?php
 //print_r($_POST);
+$message = "";
 if(array_key_exists('updateProfile', $_POST)) { 
-    updateProfile($_SESSION["user_id"],$_POST["usr_fname"],$_POST["usr_mname"],$_POST["usr_lname"],$_POST["usr_gender"],$_POST["usr_birth_date"],$_POST["usr_phone"],$_POST["usr_address"],$_POST["usr_email"]); 
+    $message = updateProfile($_SESSION["user_id"],$_POST["usr_fname"],$_POST["usr_mname"],$_POST["usr_lname"],$_POST["usr_gender"],$_POST["usr_birth_date"],$_POST["usr_phone"],$_POST["usr_address"],$_POST["usr_email"]); 
 } 
 function updateProfile($usrId, $fname, $mname, $lname,$gender, $dob,$contact,$address, $email){
     $usr_type = $_SESSION["user_type"];
@@ -118,12 +134,24 @@ function updateProfile($usrId, $fname, $mname, $lname,$gender, $dob,$contact,$ad
     }
     //echo $sql;
     if ($conn->query($sql)) {
-    
-      echo "Record updated successfully!";
+      
+      echo '<div class="alert alert-success alert-dismissible fade in" id="success-alert" data-auto-dismiss="200">
+        <button type="button" class="close" data-dismiss="alert">x</button>
+        <strong>Success! </strong> User profile is updated successfully.
+        </div>';
+        $_SESSION["default_tab"] = "user_profile";
+      //echo "Record updated successfully!";
       //echo "<a href='UserReport_Export.php'> Export To Excel </a>";
       } else { 
-        echo "Error updating record: " . $conn->error;
+        //echo "Error updating record: " . $conn->error;
+        echo '<div class="alert alert-danger alert-dismissible fade in" id="error-alert" data-auto-dismiss="200">
+          <button type="button" class="close" data-dismiss="alert">x</button>
+          <strong>Error! </strong> Error updating user profile."' . $conn->error .'"' .
+          '.Try updating again after some time.</div>';
+          $_SESSION["default_tab"] = "user_profile";
+        
       }
     $conn->close();
   }
+  
 ?>

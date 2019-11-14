@@ -1,6 +1,8 @@
-  <table class="table table-bordered">
+<form method="post" action=""> 
+  <input type="hidden" id="emp_id" name="emp_id">
+  <table class="table table-bordered" id="drop-table">
     <thead>
-      <tr class="row100 head">
+      <tr  class="row100 head">
         <th class="cell100 column1">Employee Name</th>
         <th class="cell100 column2">Employee ID</th>
         <th class="cell100 column3">Date of Birth</th>
@@ -10,7 +12,11 @@
       </tr>
     </thead>
     <tbody>
+    
     <?php
+    //print_r($_POST);
+      $error = false;
+      $success = false;
       $conn = mysqli_connect("localhost", "root", "", "CRMDB_SE");
       // Check connection
       if ($conn->connect_error) {
@@ -22,11 +28,55 @@
       if ($result->num_rows > 0) {
       // output data of each row
         while($row = $result->fetch_assoc()) {
-          echo "<tr class='row100 body'><td>" . $row["E_FName"]. "</td><td>" . $row["E_Id"] . "</td><td>" . $row["DOB"] ."</td><td>". $row["E_Start_Date"]. "</td><td>". $row["Dept_Name"] . "</td><td>". $row["Contact"] . "</td></tr>";
+          echo "<tr id='" . $row["E_Id"] . "' class='row100 body'><td>" . $row["E_FName"]. "</td><td>" . $row["E_Id"] . "</td><td>" . $row["DOB"] ."</td><td>". $row["E_Start_Date"]. "</td><td>". $row["Dept_Name"] . "</td><td>". $row["Contact"] . "</td></tr>";
         }
         echo "</tbody></table>";
         //echo "<a href='UserReport_Export.php'> Export To Excel </a>";
-        } else { echo "0 results"; }
-      $conn->close();
+      } else { echo "0 results"; }
+
+      //Drop employee
+      if(array_key_exists('drop', $_POST)) { 
+        if($_POST["emp_id"]!=NULL){
+          dropEmployee($conn,$_POST["emp_id"]); 
+        }
+      } 
+      
+
+      function dropEmployee($conn1, $emp_to_del){
+          if (!is_null($emp_to_del))
+          {
+            if ($conn1->connect_error) {
+              die("Connection failed: " . $conn1->connect_error);
+            }
+            $sql1 = "Delete from employee where E_ID = " . $emp_to_del;
+            //echo $sql1;
+            if($conn1->query($sql1))
+            {
+              //echo "<script> alert('Selected Employee deleted successfully')</script>";
+              echo '<div class="alert alert-success alert-dismissible fade in" id="success-alert" data-auto-dismiss="200">
+                <button type="button" class="close" data-dismiss="alert">x</button>
+                <strong>Success! </strong> Employee deleted successfully.
+                </div>';
+                $_SESSION["default_tab"] = "drop_emp";
+                $success = true;
+            }
+            else{
+              //echo "Error updating record: " . $conn1->error;
+              echo '<div class="alert alert-danger alert-dismissible fade in" id="error-alert" data-auto-dismiss="200">
+                <button type="button" class="close" data-dismiss="alert">x</button>
+                <strong>Error! </strong> Error deleting employee."' . $conn->error .'"' .
+                '.Try deleting again after some time. </div>';
+                $_SESSION["default_tab"] = "drop_emp";
+                $error = true;
+            }            
+          }
+          //$_POST['ssn_i'] = "";
+          //$conn1->close();
+      } 
+      $conn->close();  
+         
       ?>
-      <button id="drop" class="btn btn-primary text-white font-weight-bold">Drop Employee</button>   
+      <br>
+      <button id="drop" name="drop" class="btn btn-primary text-white font-weight-bold">Drop Employee</button>   
+      </form>
+
