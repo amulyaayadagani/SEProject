@@ -40,11 +40,11 @@
                         <input autocomplete="off" required type="text" name="usr_birth_date" id="usr_birth_date" class="form-control" value = "<?php echo $dob;?>">
                        
                 </div>
-                <!--<input type="text" class="form-control" name="usr_birth_date" value = "<?php echo $dob;?>" id="usr_birth_date" required>-->
+                
             </div>
             <div class="col-md-4 form-group">
                 <label for="password">User Password </label>
-                <input type="password" name="u_password" id="u_password" class="form-control " values="<?php echo $pass ?>" >
+                <input type="password" name="u_password" id="u_password" class="form-control " values="<?php echo $pass; ?>" >
             </div>                    
           </div>
           <div class="row">
@@ -66,30 +66,7 @@
           </div>
         </div>
         
-          <div class="row" style="display: none">
-            <div class="col-md-6 mb-3 mb-md-0">
-              <label for="city" >City</label>
-              <div class="field-icon-wrap">
-                <div class="icon"><span class="ion-ios-arrow-down"></span></div>
-                <select name="" id="city" name="city" class="form-control" value= "<?php echo $city;?>"> 
-                  <option value="">Greensboro</option>
-                  <option value="">Charlotte</option>
-                  <option value="">Raleign</option>
-                </select>
-              </div>
-            </div>
-            <div class="col-md-6 mb-3 mb-md-0">
-              <label for="state" >State</label>
-              <div class="field-icon-wrap">
-                <div class="icon"><span class="ion-ios-arrow-down"></span></div>
-                <select name="" id="state" name="state" class="form-control" value="<?php echo $state;?>">
-                  <option value="">North Carolina</option>
-                  <option value="">South Carolina</option>
-                </select>
-              </div>
-            </div>
-          </div>
-          <div class="row">
+           <div class="row">
             <div class="col-md-6 form-group"><br>
               <input type="submit" name="updateProfile" value="Update Profile" class="btn btn-primary text-white font-weight-bold">
             </div>

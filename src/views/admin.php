@@ -46,9 +46,9 @@
       die("Connection failed: " . $conn->connect_error);
     }
     if(isset($_SESSION["user_type"]) && $_SESSION["user_type"] == "Admin"){
-      $sql = "SELECT E_FName,E_MName,E_LName,Dept_Name,DOB,E_Id,Contact,E_Start_Date,Address,Email,gender from employee where E_Id = " . $_SESSION["user_id"];
+      $sql = "SELECT E_FName,E_MName,E_LName,Dept_Name,DOB,E_Id,Contact,E_Start_Date,Address,Email,gender,E_Password from employee where E_Id = " . $_SESSION["user_id"];
     }else{
-      $sql = "SELECT C_FName,C_MName,C_LName,DOB,C_Id,Contact,Address,Email,C_Type,C_Points,gender from customer where C_Id = " . $_SESSION["user_id"];
+      $sql = "SELECT C_FName,C_MName,C_LName,DOB,C_Id,Contact,Address,Email,C_Type,C_Points,gender,C_Password from customer where C_Id = " . $_SESSION["user_id"];
     } 
     $result = $conn->query($sql);
     
@@ -65,7 +65,7 @@
           $contact= $row["Contact"];
           $address= $row["Address"];
           $email  = $row["Email"];
-          //$pass   = $row["Password"];
+          $pass   = $_SESSION["user_type"] == "Admin"?$row["E_Password"]:$row["C_Password"];
           //$city   = $row["City"];
           //$state  = $row["State"];
         }      
@@ -79,7 +79,7 @@
         $contact= "";
         $address= "";
         $email  = ""; 
-        //$pass   = "";
+        $pass   = "";
         //$city   = "";
         //$state  = "";
       }
