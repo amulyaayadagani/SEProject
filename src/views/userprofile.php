@@ -1,3 +1,5 @@
+<link rel="stylesheet" href="../dist/css/bootstrap-datepicker.css">
+<script src="../dist/js/bootstrap-datepicker.js"></script> 
 <!--<section class="section " id="usr_next">-->
 
   <div class="container">
@@ -43,7 +45,7 @@
                 
             </div>
             <div class="col-md-4 form-group">
-                <label for="password">User Password </label>
+                <label for="u_password">User Password </label>
                 <input type="password" name="u_password" id="u_password" class="form-control " values="<?php echo $pass; ?>" >
             </div>                    
           </div>
@@ -76,28 +78,28 @@
     </div>
   </div>
 <!--</section> -->
-<script type="text/javascript">
-    jQuery(document).ready(function() {
-      var gender = '<?php echo $gender; ?>';
-      if(gender == 'Male'){
-        jQuery('#usr_male').attr('checked', true);
-      }else{
-        jQuery('#usr_female').attr('checked', true);
-      }
-
-      $('#usr_birth_date').datepicker({
-        startDate: new Date(),
-        autoclose: true,
-      });
+<script>
+  $( document ).ready(function() {
+   $('#usr_birth_date').datepicker({
+     autoclose: true,
+     format: 'yyyy-mm-dd'
     });
+   var gender = '<?php echo $gender; ?>';
+    if(gender == 'Male'){
+      jQuery('#usr_male').attr('checked', true);
+    }else{
+      jQuery('#usr_female').attr('checked', true);
+    }
+  });
 </script>
+
 <?php
 //print_r($_POST);
 $message = "";
 if(array_key_exists('updateProfile', $_POST)) { 
-    $message = updateProfile($_SESSION["user_id"],$_POST["usr_fname"],$_POST["usr_mname"],$_POST["usr_lname"],$_POST["usr_gender"],$_POST["usr_birth_date"],$_POST["usr_phone"],$_POST["usr_address"],$_POST["usr_email"]); 
+    $message = updateProfile($_SESSION["user_id"],$_POST["usr_fname"],$_POST["usr_mname"],$_POST["usr_lname"],$_POST["usr_gender"],$_POST["usr_birth_date"],$_POST["usr_phone"],$_POST["usr_address"],$_POST["usr_email"],$_POST["u_password"]); 
 } 
-function updateProfile($usrId, $fname, $mname, $lname,$gender, $dob,$contact,$address, $email){
+function updateProfile($usrId, $fname, $mname, $lname,$gender, $dob,$contact,$address, $email,$password){
     $usr_type = $_SESSION["user_type"];
     $conn = mysqli_connect("localhost", "root", "", "CRMDB_SE");
     // Check connection
@@ -105,16 +107,16 @@ function updateProfile($usrId, $fname, $mname, $lname,$gender, $dob,$contact,$ad
       die("Connection failed: " . $conn->connect_error);
     }
     if($usr_type == "Admin"){
-      $sql = "Update Employee set E_FName = '" . $fname . "',E_MName ='" . $mname . "',E_LName='" . $lname . "',DOB='" . $dob . "',Contact=" . $contact . ",Address='" . $address . "',email='" . $email . "',gender='" . $gender . "' where E_Id=" . $usrId;
+      $sql = "Update Employee set E_FName = '" . $fname . "',E_MName ='" . $mname . "',E_LName='" . $lname . "',DOB='" . $dob . "',Contact=" . $contact . ",Address='" . $address . "',email='" . $email . "',gender='" . $gender . "',E_Password = '". $password ."' where E_Id=" . $usrId;
     }else{
-      $sql = "Update Customer set C_FName = '" . $fname . "',C_MName ='" . $mname . "',C_LName='" . $lname . "',DOB='" . $dob . "',Contact=" . $contact . ",Address='" . $address . "',email='" . $email . "',gender='" . $gender . "' where C_Id=" . $usrId;
+      $sql = "Update Customer set C_FName = '" . $fname . "',C_MName ='" . $mname . "',C_LName='" . $lname . "',DOB='" . $dob . "',Contact=" . $contact . ",Address='" . $address . "',email='" . $email . "',gender='" . $gender . "',C_Password = '". $password . "' where C_Id=" . $usrId;
     }
     //echo $sql;
     if ($conn->query($sql)) {
       
       echo '<div class="alert alert-success alert-dismissible fade in" id="success-alert" data-auto-dismiss="200">
         <button type="button" class="close" data-dismiss="alert">x</button>
-        <strong>Success! </strong> User profile is updated successfully.
+        <strong>Success! </strong> User profile updated successfully.
         </div>';
         $_SESSION["default_tab"] = "user_profile";
       //echo "Record updated successfully!";

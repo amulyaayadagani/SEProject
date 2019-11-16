@@ -43,3 +43,17 @@
         </div>
     </div>    
 </div>
+
+<script>
+  $( document ).ready(function() {
+   $('#start_date').datepicker({
+     autoclose: true,
+     format: 'yyyy-mm-dd'
+    });
+
+   $('#end_date').datepicker({
+     autoclose: true,
+     format: 'yyyy-mm-dd'
+    });
+  });
+</script>

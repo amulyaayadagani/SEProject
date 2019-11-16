@@ -1,3 +1,30 @@
+ <?php
+    //print_r($_POST);
+      $error = false;
+      $success = false;
+      $conn = mysqli_connect("localhost", "root", "", "CRMDB_SE");
+      // Check connection
+      if ($conn->connect_error) {
+        die("Connection failed: " . $conn->connect_error);
+      }
+      $sql = "SELECT E_FName,E_MName,E_LName,E_Id,Dept_Name,DOB,E_Id,Contact,E_Start_Date from employee where emp_status = 'Active'";
+      //$result = $conn->query($sql);
+
+      if ($result->num_rows > 0) {
+      } else { echo "0 results"; }
+
+      //Drop employee
+      if(array_key_exists('drop', $_POST)) { 
+        if($_POST["emp_id"]!=NULL){
+          dropEmployee($conn,$_POST["emp_id"]); 
+        }
+      } 
+      
+
+      
+         
+      ?>
+<div class="container">
 <form method="post" action=""> 
   <input type="hidden" id="emp_id" name="emp_id">
   <table class="table table-bordered" id="drop-table">
@@ -13,36 +40,43 @@
     </thead>
     <tbody>
     
-    <?php
-    //print_r($_POST);
-      $error = false;
-      $success = false;
-      $conn = mysqli_connect("localhost", "root", "", "CRMDB_SE");
-      // Check connection
-      if ($conn->connect_error) {
-        die("Connection failed: " . $conn->connect_error);
-      }
-      $sql = "SELECT E_FName,E_MName,E_LName,E_Id,Dept_Name,DOB,E_Id,Contact,E_Start_Date from employee where emp_status = 'Active'";
-      $result = $conn->query($sql);
+    <?php 
+      if ($result = $conn->query($sql)) {
+          while ($row = $result->fetch_assoc()) {
+              $field1name = $row["E_FName"];
+              $field2name = $row["E_Id"];
+              $field3name = $row["DOB"];
+              $field4name = $row["E_Start_Date"];
+              $field5name = $row["Dept_Name"]; 
+              $field5name = $row["Contact"]; 
+       
+              echo '<tr> 
+                        <td>'.$field1name.'</td> 
+                        <td>'.$field2name.'</td> 
+                        <td>'.$field3name.'</td> 
+                        <td>'.$field4name.'</td> 
+                        <td>'.$field5name.'</td> 
+                        <td>'.$field5name.'</td> 
+                    </tr>';
 
-      if ($result->num_rows > 0) {
-      // output data of each row
-        while($row = $result->fetch_assoc()) {
-          echo "<tr id='" . $row["E_Id"] . "' class='row100 body'><td>" . $row["E_FName"]. "</td><td>" . $row["E_Id"] . "</td><td>" . $row["DOB"] ."</td><td>". $row["E_Start_Date"]. "</td><td>". $row["Dept_Name"] . "</td><td>". $row["Contact"] . "</td></tr>";
-        }
-        echo "</tbody></table>";
-        //echo "<a href='UserReport_Export.php'> Export To Excel </a>";
-      } else { echo "0 results"; }
+          }
+          //echo "<a href='UserReport_Export.php'> Export To Excel </a>";
 
-      //Drop employee
-      if(array_key_exists('drop', $_POST)) { 
-        if($_POST["emp_id"]!=NULL){
-          dropEmployee($conn,$_POST["emp_id"]); 
-        }
+          $result->free();
       } 
-      
+      ?>
 
-      function dropEmployee($conn1, $emp_to_del){
+    </tbody>
+  </table>
+
+
+      <br>
+      <button id="drop" name="drop" class="btn btn-primary text-white font-weight-bold">Drop Employee</button>   
+      </form>
+    </div>
+
+      <?php
+   function dropEmployee($conn1, $emp_to_del){
           if (!is_null($emp_to_del))
           {
             if ($conn1->connect_error) {
@@ -73,10 +107,5 @@
           //$_POST['ssn_i'] = "";
           //$conn1->close();
       } 
-      $conn->close();  
-         
-      ?>
-      <br>
-      <button id="drop" name="drop" class="btn btn-primary text-white font-weight-bold">Drop Employee</button>   
-      </form>
+   ?>
 

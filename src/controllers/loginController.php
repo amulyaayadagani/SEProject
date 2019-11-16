@@ -11,6 +11,7 @@ if (isset($_POST['username']) && isset($_POST['userpassword'])) {
     if (mysqli_connect_error()) {
         die('Connect Error (' . mysqli_connect_errno() . ') ' . mysqli_connect_error());
     } else {
+        $loginError = "";
         if (strlen($username) <= 4) {
             
             $sql = "SELECT COUNT(*) FROM Customer where C_Id = $username";
@@ -27,8 +28,9 @@ if (isset($_POST['username']) && isset($_POST['userpassword'])) {
                 }
                 
                 if ($count == 0) {
-                    echo 'Username not found. Please Register';
+                    $loginError = "<strong>Error! </strong> User ID not found. Please Register";
                 } else {
+                    $loginError = "";
                     $loginSql = "SELECT C_Id, C_FName FROM Customer where C_Id = $username AND C_Password = '$password'";
                     
                     $loginDetailsResult = $conn->query($loginSql);
@@ -47,17 +49,17 @@ if (isset($_POST['username']) && isset($_POST['userpassword'])) {
                         header("Location: index.php?page=search");
                         exit;
                     } else {
-                        echo "Invalid Credentials";
+                       $loginError = "<strong>Error! </strong> Invalid Credentials";
                     }
                     
                 }
                 
             } else {
-                echo "User ID not found. Please Register";
+                $loginError = "<strong>Error! </strong> User ID not found. Please Register";
             }
             
         } else if (strlen($username) >= 5) {
-            
+            $loginError = "";
             $sql = "SELECT COUNT(*) FROM employee where E_Id = $username";
             
             $checkUsernameResult = $conn->query($sql);
@@ -72,7 +74,7 @@ if (isset($_POST['username']) && isset($_POST['userpassword'])) {
                 }
                 
                 if ($count == 0) {
-                    echo 'Username not found. Please Register';
+                    $loginError = "<strong>Error! </strong> User ID not found. Please Register";
                 } else {
                     
                     $loginSql = "SELECT E_Id, E_FName, E_Type FROM employee where E_Id = $username AND E_Password = '$password'";
@@ -93,16 +95,16 @@ if (isset($_POST['username']) && isset($_POST['userpassword'])) {
                         header("Location: index.php?page=search");
                         exit;
                     } else {
-                        echo "Invalid Credentials";
+                        $loginError = "<strong>Error! </strong> Invalid Credentials";
                     }
                     
                 }
             } else {
-                echo "Invalid Credentials.";
+                 $loginError = "<strong>Error! </strong> Invalid Credentials";
             }
             
         } else {
-            echo 'Invalid User ID';
+             $loginError = "<strong>Error! </strong> Invalid User ID";
         }
     }
 }

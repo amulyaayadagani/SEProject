@@ -7,7 +7,7 @@
             <form action="#" method="post" class="bg-white p-md-5 p-4 mb-5 border">
               <div class="row">
                 <div class="col-md-12 form-group">
-                  <label class="text-black font-weight-bold" for="username">User Name</label>
+                  <label class="text-black font-weight-bold" for="username">User ID</label>
                   <input type="text" id="username" name="username" placeholder="Enter UserName " class="form-control" required>
                 </div>
               </div>
@@ -23,10 +23,18 @@
                   <!-- <input type="submit" value="Login" class="btn btn-primary text-white py-3 px-5 font-weight-bold"> -->
                
                   <button type="submit" value="Register" class="btn btn-primary text-white py-3 px-5 font-weight-bold">
-                  <a class="text-white ">Login</a>
+                  <a class="text-white " id="loginButton">Login</a>
                   </button>
-                  
                 </div>
+              </div>
+
+              <div class="row">
+                <?php if(isset($loginError) && strlen($loginError) > 0) : ?>
+                    <?php echo '<div class="alert alert-danger alert-dismissible">
+                      <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                      ' . $loginError .
+                   '</div>' ?>
+                   <?php endif; ?>
               </div>
             </form>
 

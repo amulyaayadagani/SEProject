@@ -37,7 +37,10 @@
                 </div> 
                 <div class="col-md-4 form-group">
                     <label for="birth_date">DOB</label>
-                    <input type="text" name="birth_date" id="birth_date" class="form-control " required>
+                    <div class="field-icon-wrap">
+                        <div class="icon"><span class="icon-calendar"></span></div>
+                        <input autocomplete="off" required type="text" name="birth_date" id="birth_date" class="form-control">
+                     </div>
                 </div>
                 <div class="col-md-4 form-group">
                     <label for="password">User Password </label>
@@ -123,6 +126,15 @@
     <!--</section> -->
   </div>
    <!-- </section> -->
+   <script>
+  $( document ).ready(function() {
+   $('#birth_date').datepicker({
+     autoclose: true,
+     format: 'yyyy-mm-dd'
+    });
+  });
+</script>
+
   <?php
    //print_r($_POST);
       if(isset($_POST["emp_fname"]) && isset($_POST["emp_mname"]) && isset($_POST["emp_lname"]) && isset($_POST["birth_date"]) && isset($_POST["phone"]) && isset($_POST["email"]) && isset($_POST["address"]) && isset($_POST["password"]) && isset($_POST["e_type"])) 

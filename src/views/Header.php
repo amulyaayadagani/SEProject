@@ -19,11 +19,13 @@
                      <div class="col-md-6 mx-auto">
                         <ul class="list-unstyled menu" id="header-menu">
                            <li class="active"><a href="index.php?page=search">Home</a></li>
+                            <?php if(!(isset($_SESSION['user_id']))) : ?>
                            <li ><a href="index.php?page=login">Login</a></li>
                            <li ><a href="index.php?page=registration">Registration</a></li>
+                            <?php endif; ?>
                            <?php if(isset($_SESSION['user_id'])) : ?>
-                              <li><a href="index.php?page=ModifyReservation">Lookup Reservation</a></li>
-                           <li><a href="index.php?page=admin">Admin</a></li>
+                              <li><a href="index.php?page=ModifyReservation">Reservations</a></li>
+                           <li><a href="index.php?page=admin">Manage Profile</a></li>
                            <?php endif; ?>
                            <li><a href="index.php?page=about">About</a></li>
                            <?php if(isset($_SESSION['user_id'])) : ?>
@@ -47,7 +49,7 @@
             <span class="custom-caption text-uppercase text-white d-block  mb-3">Welcome To 5 <span class="fa fa-star text-primary"></span>   Hotel</span>         
             <?php 
                $page = ( isset($_GET['page']) ) ? $_GET['page'] : 'search';
-               $pageContent = array("search"=>"Best Place to stay", "rooms"=>"Room Details", "ModifyReservation"=>"Reservation", "about" => "About","registration"=>"Registration","admin"=>"Administration","login"=>"Login","reserve"=>"Booking Confirmation");               
+               $pageContent = array("search"=>"Best Place to stay", "rooms"=>"Room Details", "ModifyReservation"=>"Reservation", "about" => "About","registration"=>"Registration","admin"=>"Manage Profile","login"=>"Login","reserve"=>"Booking Confirmation");               
                echo "<h1 class='heading'>". $pageContent[$page] ."</h1>";
                ?>
          </div>
