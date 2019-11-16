@@ -83,7 +83,7 @@ if(isset($_GET['confirm'])){
 
                      if ($conn->query($sqlRoomAvailability) === TRUE) {
 
-                          $sqlNotification = "INSERT INTO notification(C_ID, Message, date_received, subject, message_id) VALUES ($cid,'Hello , Thank You for booking at our Hotel. Your Reservation Details - /n Booking Id = $booking_id /n Room Number = $Room_Num /n Checkin Date = $checkin_date /n Checkout Date = $checkout_date /n Reservation Date = $reservation_date /n Price = $Price','$reservation_date','Booking Confirmation',null)";
+                          $sqlNotification = "INSERT INTO notification(C_ID, Message, date_received, subject, message_id) VALUES ($cid,'Dear Customer , Thank You for booking at our Hotel. Your Reservation Details are as folloes: \n Booking Id = $booking_id \n Room Number = $Room_Num \n Checkin Date = $checkin_date \n Checkout Date = $checkout_date \n Reservation Date = $reservation_date \n Price = $Price','$reservation_date','Booking Confirmation',null)";
 
                             if ($conn->query($sqlNotification) === TRUE) {
                               echo 'success';
@@ -117,7 +117,7 @@ if(isset($_GET['confirm'])){
 
               if ($conn->query($sqlReservation) === TRUE) {
                  
-                  $sqlNotification = "INSERT INTO notification(C_ID, Message, date_received, subject, message_id) VALUES ($cid,'Hello, Thank You for booking at our Hotel. Your booking is currently waitlisted. Booking details Checkin Date = $checkin_date /n Checkout Date = $checkout_date /n Reservation Date = $reservation_date /n Price = $Price','$reservation_date','Booking Waitlisted',null)";
+                  $sqlNotification = "INSERT INTO notification(C_ID, Message, date_received, subject, message_id) VALUES ($cid,'Dear Customer, Thank You for booking at our Hotel. Your booking is currently waitlisted. Your booking details are as followes: \n Checkin Date = $checkin_date \n Checkout Date = $checkout_date \n Reservation Date = $reservation_date \n Price = $Price','$reservation_date','Booking Waitlisted',null)";
 
                     if ($conn->query($sqlNotification) === TRUE) {
                       echo '<meta http-equiv="refresh" content="1; URL=index.php?page=ModifyReservation" />';

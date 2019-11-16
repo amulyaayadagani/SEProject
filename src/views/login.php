@@ -8,7 +8,7 @@
               <div class="row">
                 <div class="col-md-12 form-group">
                   <label class="text-black font-weight-bold" for="username">User ID</label>
-                  <input type="text" id="username" name="username" placeholder="Enter UserName " class="form-control" required>
+                  <input type="text" id="username" name="username" placeholder="Enter User ID " class="form-control" required>
                 </div>
               </div>
           
