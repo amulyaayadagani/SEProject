@@ -1,66 +1,83 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+<script src="bootstrap-auto-dismiss-alert.js"></script>
 
- <form method="post" action="//submit.form" onSubmit="return validateForm();">
- <div style="width: 400px;">
- </div>
- <div align="center" style="padding-bottom: 18px;font-size : 24px;">Modify Reservation</div>
- <div align="center" style="padding-bottom: 18px;">Booking ID<span style="color: red;"> *</span><br/>
- <input type="text" id="data_5" name="data_5" style="width : 250px;" class="form-control"/>
- </div>
-<div align="center" style="padding-bottom: 18px;">New Check-in date<span style="color: red;"> *</span><br/>
-<input type="text" id="data_6" name="data_6" style="width : 250px;" class="form-control"/>
- </div>
- <script src="https://cdnjs.cloudflare.com/ajax/libs/pikaday/1.4.0/pikaday.min.js" type="text/javascript"></script>
- <link href="https://cdnjs.cloudflare.com/ajax/libs/pikaday/1.4.0/css/pikaday.min.css" rel="stylesheet" type="text/css" />
- <script type="text/javascript">new Pikaday({ field: document.getElementById('data_6') });</script>
- <div align="center" style="padding-bottom: 18px;">New Check-out date<span style="color: red;"> *</span><br/>
- <input type="text" id="data_7" name="data_7" style="width : 250px;" class="form-control"/>
- </div>
- <script src="https://cdnjs.cloudflare.com/ajax/libs/pikaday/1.4.0/pikaday.min.js" type="text/javascript"></script>
- <link href="https://cdnjs.cloudflare.com/ajax/libs/pikaday/1.4.0/css/pikaday.min.css" rel="stylesheet" type="text/css" />
- <script type="text/javascript">new Pikaday({ field: document.getElementById('data_7') })
+<section class="section testimonial-section" >
+	<h3>Reservations </h3>
+<div class=container >
+<form method="post" action="./views/modifyReserveCtrl.php"> 
+  <input type="hidden" id="reserve_id" name="reserve_id">
+  <table class="table table-bordered" id="drop-table">
+    <thead>
+      <tr  id="rowid" name="rowid" class="row100 head">
+        <th class="cell100 column1">Reserve_Id</th>
+        <th class="cell100 column2">Checkin_Date</th>
+        <th class="cell100 column3">Checkout_Date</th>
+        <th class="cell100 column3">Rooom_Id</th>
+        <th class="cell100 column4">RoomType</th>
+      </tr>
+    </thead>
+    
+	 <tbody>
+    
+    <?php
+    //print_r($_POST);
+      $error = false;
+      $success = false;
+      $conn = mysqli_connect("localhost", "root", "", "crmdb_se");
+      // Check connection
+      if ($conn->connect_error) {
+        die("Connection failed: " . $conn->connect_error);
+      }
+      $sql = "Select reservation.Reserve_Id, reservation.Checkin_Date, reservation.Checkout_Date,reservation.Room_Id,room_details.RoomType,reservation.Reservation_Date  from reservation join room_details on reservation.Room_Id=room_details.Room_Id order by reservation.Reservation_Date desc limit 10";
+      $result = $conn->query($sql);
+     if($result->  num_rows > 0){
+      	 while($row = $result-> fetch_assoc()) {
+      		 echo "<tr>
+      		 <td>". $row["Reserve_Id"]."</td>
+      		 <td>". $row["Checkin_Date"]."</td>
+      		 <td>". $row["Checkout_Date"]."</td>
+      		 <td>". $row["Room_Id"]."</td>
+      		 <td>". $row["RoomType"]."</td>
+      	 </tr>";
+    	 }
+	     echo "</table>";
+      }
+      else {
+        echo "0 result";
+      }   
+      $conn-> close();
+    ?>
+    <div id="modify1_btn" name="modify1_btn" class="col-md-6 form-group" style="display: none"><br>
+        <input type="submit" name="modify1" id="modify1" value="Modify Reservation" class="btn btn-primary text-white font-weight-bold">
+    </div>   
+  </form>
+</div>
+</section>
+<script language="javascript">
+  $('tr').click(function() {
+     $('.selected').removeClass('selected');
+      $(this).addClass('selected');
+      $('#modify1_btn').show();
+//set values in the div
+       
+  });
+  $('#modify1').click(function() {    
+        var res_id = $('.selected').find("td:eq(0)").text();
+       $("#reserve_id").val(res_id);
+       alert(res_id);      
+  });
+  
+  $('#modify').click(function() {    
+        $confirm_var = confirm("Are you sure you want to modify reservation?");
+
+        if($confirm_var){
+            //$("#reserve_id").val(res_id);
+        }else{
+          //$("#reserve_id").val(NULL);
+        }
+  });
 </script>
- <div align="center" style="padding-bottom: 18px;">Number of people<span style="color: red;"> *</span><br/>
- <input type="number" id="data_8" name="data_8" style="width : 250px;" class="form-control"/>
- </div>
- <div align="center" style="padding-bottom: 18px;">
- Room Type:
- 
- <select name="example" id="s">
- <option selected="selected" value="one">Single</option>
- <option value="two">Double</option>
- <option value="three">King</option>
-<option value="four">Queen</option>
-<option value="five">Suite</option>
- </select>
- </div>
- 
- <div align="center" style="padding-bottom: 18px;"><input name="skip_Submit" value="Submit" type="submit"/></div>
- <div>
- 
- </form>
- 
- <script type="text/javascript">
- function validateForm() {
- if (isEmpty(document.getElementById('data_5').value.trim())) {
- alert('Booking ID is required!');
- return false;
- }
- 
- 
- if (isEmpty(document.getElementById('data_6').value.trim())) {
- alert('Change Arrival date is required!');
- return false;
- }
- if (isEmpty(document.getElementById('data_7').value.trim())) {
- alert('Change Departure date is required!');
- return false;
- }
- if (isEmpty(document.getElementById('data_8').value.trim())) {
- alert('Number of people is required!');
- return false;
- }
- return true;
- }
- function isEmpty(str) { return (str.length === 0 || !str.trim());
- }
- </script>

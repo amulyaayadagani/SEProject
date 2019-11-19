@@ -38,7 +38,8 @@
     ?>
   </ul>
   <?php
-
+  list($fname,$mname,$lname,$id,$dob,$gender,$contact,$address,$email,$pass) = fetchData();
+  function fetchData(){
     $conn = mysqli_connect("localhost", "root", "", "CRMDB_SE");
     // Check connection
     if ($conn->connect_error) {
@@ -65,6 +66,7 @@
           $address= $row["Address"];
           $email  = $row["Email"];
           $pass   = $_SESSION["user_type"] == "Admin"?$row["E_Password"]:$row["C_Password"];
+          //echo $pass;
           //$city   = $row["City"];
           //$state  = $row["State"];
         }      
@@ -82,7 +84,10 @@
         //$city   = "";
         //$state  = "";
       }
-    //$conn->close();
+      return array($fname,$mname,$lname,$id,$dob,$gender,$contact,$address,$email,$pass);
+      $conn->close();
+    }
+    
   ?>
   <div class="container">
     <div class="tab-content">
@@ -109,7 +114,7 @@
   $('tr').click(function() {
      $('.selected').removeClass('selected');
       $(this).addClass('selected');
-      tid=$(this).attr('id');
+      //tid=$(this).attr('id');
   });
   
   $(document).ready(function(){
@@ -129,7 +134,7 @@
       });*/
       var name = $('.selected').find("td:eq(0)").text();
         var empId = $('.selected').find("td:eq(1)").text();
-        alert(tid);
+        //alert(tid);
 
         $confirm_var = confirm("Are you sure you want to delete employee '" + name + "' employee Id - '" + empId + "'?");
 
@@ -138,6 +143,8 @@
         }else{
           $("#emp_id").val(NULL);
         }
-        $("#" + tid).remove();
+        //$("#" + tid).remove();
   });
+  
+  
 </script>

@@ -47,7 +47,7 @@
 			//echo $message_to_del;
 			if(isset($_POST["msg_del"])){
 				$del_sql = "delete from notification where message_id =" . $_POST["msg_del"] ;
-				echo $del_sql;
+				//echo $del_sql;
 				if($conn->query($del_sql))
 				{
 				   //echo "<script> alert('Message deleted successfully')</script>";

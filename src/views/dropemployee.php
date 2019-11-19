@@ -8,12 +8,13 @@
         die("Connection failed: " . $conn->connect_error);
       }
       $sql = "SELECT E_FName,E_MName,E_LName,E_Id,Dept_Name,DOB,E_Id,Contact,E_Start_Date from employee where emp_status = 'Active'";
-      //$result = $conn->query($sql);
+      $result = $conn->query($sql);
 
       if ($result->num_rows > 0) {
       } else { echo "0 results"; }
 
       //Drop employee
+      //print_r($_POST);
       if(array_key_exists('drop', $_POST)) { 
         if($_POST["emp_id"]!=NULL){
           dropEmployee($conn,$_POST["emp_id"]); 
@@ -48,7 +49,7 @@
               $field3name = $row["DOB"];
               $field4name = $row["E_Start_Date"];
               $field5name = $row["Dept_Name"]; 
-              $field5name = $row["Contact"]; 
+              $field6name = $row["Contact"]; 
        
               echo '<tr> 
                         <td>'.$field1name.'</td> 
@@ -56,7 +57,7 @@
                         <td>'.$field3name.'</td> 
                         <td>'.$field4name.'</td> 
                         <td>'.$field5name.'</td> 
-                        <td>'.$field5name.'</td> 
+                        <td>'.$field6name.'</td> 
                     </tr>';
 
           }

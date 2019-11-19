@@ -151,6 +151,9 @@
       if($conn->query($sql) == true)
       {
         //$_SESSION["message"] = "";
+        
+        echo "<script> alert('Success! Employee record inserted successfully.')</script>";
+        echo '<meta http-equiv="refresh" content="1; URL=index.php?page=admin" />';
         echo '<div class="alert alert-success alert-dismissible fade in" id="success-alert" data-auto-dismiss="200">
         <button type="button" class="close" data-dismiss="alert">x</button>
         <strong>Success! </strong> Employee record inserted successfully.

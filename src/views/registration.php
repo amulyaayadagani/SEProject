@@ -1,3 +1,10 @@
+ <style>
+  .alert{
+    position: absolute;
+    bottom: 500px;
+    left: 100px;
+  }
+ </style>
  <section class="section contact-section" id="next">
       <div class="container">
         <div class="row">
@@ -118,10 +125,10 @@
         $host       = "localhost";
         $dbusername = "root";
         $dbpassword = "";
-        $dbname     = "crmdb_se";
+        $dbname     = "CRMDB_SE";
   $_SESSION["message"] = "";
   
-  $conn = mysqli_connect("localhost", "root", "", "crmdb_se");
+  $conn = mysqli_connect("localhost", "root", "", "CRMDB_SE");
     if(isset($_POST["C_FName"]) && isset($_POST["C_DOB"]) && isset($_POST["C_Contact"]) && isset($_POST["C_Email"]) && isset($_POST["C_Id_Proof_Type"]))
     {
       
@@ -132,7 +139,7 @@
     die("Connection failed: " . $conn->connect_error);
     }  
   $cpoints = 1000;
-    $sql =  "INSERT INTO customer (C_FName, C_MName, C_LName, C_Password, DOB, Address, Contact, Email, C_Type, C_Id_Proof_Type, C_Id_Number, C_Points) VALUES ('" . $_POST['C_FName'] . "','" . $_POST["C_MName"] . "',   '" . $_POST["C_LName"] ."', '" . $_POST["C_Password"] . "',' ".$_POST["C_DOB"] ."',  '" . $_POST["C_Address"] . "',  ".$_POST["C_Contact"] .", '" . $_POST["C_Email"] . "',   '" . $_POST["C_Type"] . "', '" . $_POST["C_Id_Proof_Type"] . "', ".$_POST["C_Id_Number"] .",". $cpoints .")";
+    $sql =  "INSERT INTO Customer (C_FName, C_MName, C_LName, C_Password, DOB, Address, Contact, Email, C_Type, C_Id_Proof_Type, C_Id_Number, C_Points) VALUES ('" . $_POST['C_FName'] . "','" . $_POST["C_MName"] . "',   '" . $_POST["C_LName"] ."', '" . $_POST["C_Password"] . "',' ".$_POST["C_DOB"] ."',  '" . $_POST["C_Address"] . "',  ".$_POST["C_Contact"] .", '" . $_POST["C_Email"] . "',   '" . $_POST["C_Type"] . "', '" . $_POST["C_Id_Proof_Type"] . "', ".$_POST["C_Id_Number"] .",". $cpoints .")";
     
     
       if(mysqli_query($conn, $sql))
@@ -143,19 +150,26 @@
       $sql2 = "INSERT INTO notification (C_ID, Message, date_received, subject) VALUES ($last_id, 'Hello " . $_POST['C_FName'] . " , Thank you for registering with us. Your customer ID is $last_id and the registered date is $registered_date Have a nice day. ','$registered_date','Customer Registration')";
     
           if(mysqli_query($conn, $sql2)){
-         echo '<div class="alert alert-success alert-dismissible fade in" id="success-alert" data-auto-dismiss="200">
-        <button type="button" class="close" data-dismiss="alert">x</button>
+         echo '<div class="alert alert-success alert-dismissible">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
         <strong>Success! </strong> Registered successfully.
         </div>';
         echo '<meta http-equiv="refresh" content="1; URL=index.php?page=login" />';
 
         }
 else{
-  echo '<div class="alert alert-danger alert-dismissible fade in" id="error-alert" data-auto-dismiss="200">
-          <button type="button" class="close" data-dismiss="alert">x</button>
+  echo "Error: " . $sql . "<br>" . $conn->error;
+  echo '<div class="alert alert-danger alert-dismissible">
+          <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
           <strong>Error! </strong> Error has occurred while registering ."' . $conn->error .'"' .
           '.Try  after some time.</div>'; 
 }
+    } else {
+      echo "Error: " . $sql . "<br>" . $conn->error;
+      echo '<div class="alert alert-danger alert-dismissible">
+      <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+          <strong>Error! </strong> Error has occurred while registering ."' . $conn->error .'"' .
+          '.Try  after some time.</div>'; 
     }
       }
       $conn->close();
