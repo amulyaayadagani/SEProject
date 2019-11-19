@@ -6,7 +6,7 @@
 <script src="bootstrap-auto-dismiss-alert.js"></script>
 
 <section class="section testimonial-section" >
-	<h3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Reservations </h3>
+  <h3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Reservations </h3>
 <div class=container >
 <form method="post" action="./views/modifyReserveCtrl.php"> 
   <input type="hidden" id="reserve_id" name="reserve_id">
@@ -18,10 +18,11 @@
         <th class="cell100 column3">Checkout_Date</th>
         <th class="cell100 column3">Rooom_Id</th>
         <th class="cell100 column4">RoomType</th>
+        <th class="cell100 column4">Status</th>
       </tr>
     </thead>
     
-	 <tbody>
+   <tbody>
     
     <?php
     //print_r($_POST);
@@ -33,22 +34,23 @@
         die("Connection failed: " . $conn->connect_error);
       }
       if($_SESSION["user_type"]=== "Admin"){
-      $sql = "Select reservation.Reserve_Id, reservation.Checkin_Date, reservation.Checkout_Date,reservation.Room_Id,room_details.RoomType,reservation.Reservation_Date  from reservation join room_details on reservation.Room_Id=room_details.Room_Id order by reservation.Reservation_Date desc ";
+      $sql = "Select reservation.Reserve_Id, reservation.Checkin_Date, reservation.Checkout_Date,reservation.Room_Id,room_details.RoomType,reservation.Reservation_Date,reservation.status from reservation join room_details on reservation.Room_Id=room_details.Room_Id order by reservation.Reservation_Date desc ";
     }else{
-      $sql = "Select reservation.Reserve_Id, reservation.Checkin_Date, reservation.Checkout_Date,reservation.Room_Id,room_details.RoomType,reservation.Reservation_Date  from reservation join room_details on reservation.Room_Id=room_details.Room_Id where C_ID = " . $_SESSION["user_id"] ." order by reservation.Reservation_Date desc ";
+      $sql = "Select reservation.Reserve_Id, reservation.Checkin_Date, reservation.Checkout_Date,reservation.Room_Id,room_details.RoomType,reservation.Reservation_Date,reservation.status  from reservation join room_details on reservation.Room_Id=room_details.Room_Id where C_ID = " . $_SESSION["user_id"] ." order by reservation.Reservation_Date desc ";
     }
       $result = $conn->query($sql);
      if($result->  num_rows > 0){
-      	 while($row = $result-> fetch_assoc()) {
-      		 echo "<tr>
-      		 <td>". $row["Reserve_Id"]."</td>
-      		 <td>". $row["Checkin_Date"]."</td>
-      		 <td>". $row["Checkout_Date"]."</td>
-      		 <td>". $row["Room_Id"]."</td>
-      		 <td>". $row["RoomType"]."</td>
-      	 </tr>";
-    	 }
-	     echo "</table>";
+         while($row = $result-> fetch_assoc()) {
+           echo "<tr>
+           <td>". $row["Reserve_Id"]."</td>
+           <td>". $row["Checkin_Date"]."</td>
+           <td>". $row["Checkout_Date"]."</td>
+           <td>". $row["Room_Id"]."</td>
+           <td>". $row["RoomType"]."</td>
+           <td>". $row["status"]."</td>
+         </tr>";
+       }
+       echo "</table>";
       }
       else {
         echo "0 result";
