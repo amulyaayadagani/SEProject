@@ -55,6 +55,7 @@
 				        <button type="button" class="close" data-dismiss="alert">x</button>
 				        <strong>Success! </strong> Selected message deleted successfully.
 				        </div>';
+				        echo "<script> alert('Selected message deleted successfully!')</script>";
 				        $_SESSION["default_tab"] = "notifications";
 				}
 				else{

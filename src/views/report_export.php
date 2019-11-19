@@ -28,17 +28,17 @@
         print_r("Report Publish Date" . "\t" . date("Y-m-d") . "\n \n");
         if($start_date != "" && $end_date != ""){
             $sql = "SELECT Reserve_Id,C_Id,Reservation_Date, Checkin_Date,Checkout_Date,Room_Id,Comments FROM Reservation where Checkin_Date >='" . $start_date ."' and Checkin_Date <= '" . $end_date . "'";
-            echo '1' . $sql;
+            //echo '1' . $sql;
         }else if($start_date != "" && $end_date == ""){
             $sql = "SELECT Reserve_Id,C_Id,Reservation_Date, Checkin_Date,Checkout_Date,Room_Id,Comments FROM Reservation where Checkin_Date >='" . $start_date ."' or Checkout_Date >= '" . $start_date . "'";
-            echo '2' .$sql;
+            //echo '2' .$sql;
         }else if($start_date == "" && $end_date != ""){
             $sql = "SELECT Reserve_Id,C_Id,Reservation_Date, Checkin_Date,Checkout_Date,Room_Id,Comments FROM Reservation where Checkin_Date <='" . $end_date . "' or Checkout_Date <='" . $end_date . "'";
-            echo '3' . $sql;
+            //echo '3' . $sql;
         }
         else{
             $sql = "SELECT Reserve_Id,C_Id,Reservation_Date, Checkin_Date,Checkout_Date,Room_Id,Comments FROM Reservation";
-            echo '4' . $sql;
+            //echo '4' . $sql;
         }
         $columnHeader = '';  
         $columnHeader = "Reservation ID" . "\t" . "Customer ID" . "\t" . "Reservation Date" . "\t" . "Checkin Date" . "\t" . "Checkout Date" . "\t" . "Room ID" . "\t" . "Comments" . "\t";

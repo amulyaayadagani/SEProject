@@ -6,7 +6,7 @@
 <script src="bootstrap-auto-dismiss-alert.js"></script>
 
 <section class="section testimonial-section" >
-	<h3>Reservations </h3>
+	<h3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Reservations </h3>
 <div class=container >
 <form method="post" action="./views/modifyReserveCtrl.php"> 
   <input type="hidden" id="reserve_id" name="reserve_id">
@@ -32,7 +32,11 @@
       if ($conn->connect_error) {
         die("Connection failed: " . $conn->connect_error);
       }
-      $sql = "Select reservation.Reserve_Id, reservation.Checkin_Date, reservation.Checkout_Date,reservation.Room_Id,room_details.RoomType,reservation.Reservation_Date  from reservation join room_details on reservation.Room_Id=room_details.Room_Id order by reservation.Reservation_Date desc limit 10";
+      if($_SESSION["user_type"]=== "Admin"){
+      $sql = "Select reservation.Reserve_Id, reservation.Checkin_Date, reservation.Checkout_Date,reservation.Room_Id,room_details.RoomType,reservation.Reservation_Date  from reservation join room_details on reservation.Room_Id=room_details.Room_Id order by reservation.Reservation_Date desc ";
+    }else{
+      $sql = "Select reservation.Reserve_Id, reservation.Checkin_Date, reservation.Checkout_Date,reservation.Room_Id,room_details.RoomType,reservation.Reservation_Date  from reservation join room_details on reservation.Room_Id=room_details.Room_Id where C_ID = " . $_SESSION["user_id"] ." order by reservation.Reservation_Date desc ";
+    }
       $result = $conn->query($sql);
      if($result->  num_rows > 0){
       	 while($row = $result-> fetch_assoc()) {
@@ -68,7 +72,7 @@
   $('#modify1').click(function() {    
         var res_id = $('.selected').find("td:eq(0)").text();
        $("#reserve_id").val(res_id);
-       alert(res_id);      
+       //alert(res_id);      
   });
   
   $('#modify').click(function() {    

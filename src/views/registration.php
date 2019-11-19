@@ -152,9 +152,10 @@
           if(mysqli_query($conn, $sql2)){
          echo '<div class="alert alert-success alert-dismissible">
         <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-        <strong>Success! </strong> Registered successfully.
-        </div>';
-        echo '<meta http-equiv="refresh" content="1; URL=index.php?page=login" />';
+        <strong>Thank You for registering with us! </strong> Your UserID is ' . $last_id
+        . '</div>';
+        //echo "<script> alert('Thank You for registering with us! Your UserID is'+ $last_id )</script>";
+        //echo '<meta http-equiv="refresh" content="1; URL=index.php?page=login" />';
 
         }
 else{

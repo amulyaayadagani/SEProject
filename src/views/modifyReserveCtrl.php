@@ -1,14 +1,14 @@
  <?php 
-print_r($_POST);
+//print_r($_POST);
   if(array_key_exists('modify1', $_POST)) { 
     if($_POST["reserve_id"]!=NULL){
-      echo "inside if";
+      //echo "inside if";
       $reserveid    = "";
             $checkindate  = "";
             $checkoutdate = "";
             $roomtype     = "";   
       $dataArray = loadReservation($_POST["reserve_id"]); 
-      print_r($dataArray);
+      //print_r($dataArray);
     }
   }
 function loadReservation($reserveId){
@@ -22,20 +22,20 @@ function loadReservation($reserveId){
         die("Connection failed: " . $conn1->connect_error);
       }
       $sql1 = "select Reserve_Id,Checkin_Date,Checkout_Date,Room_Id from Reservation where Reserve_Id = " . $reserveId;
-      echo $sql1;
+      //echo $sql1;
       $result1 = $conn1->query($sql1);
     
       if ($result1->num_rows > 0) {
       // output data of each row
           while($row = $result1->fetch_assoc()) {
               //echo $row["E_FName"];
-            echo $row["Reserve_Id"];
-            echo $row["Checkin_Date"];
+            //echo $row["Reserve_Id"];
+            //echo $row["Checkin_Date"];
             $reserveid    = $row["Reserve_Id"];
             $checkindate  = $row["Checkin_Date"];
             $checkoutdate = $row["Checkout_Date"];
             $roomid       = $row["Room_Id"];
-            echo $reserveid;
+            //echo $reserveid;
           }      
         } else { 
           echo "No profile record found";
