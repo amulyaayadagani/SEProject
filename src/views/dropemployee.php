@@ -1,3 +1,4 @@
+
  <?php
     //print_r($_POST);
       $error = false;
@@ -28,7 +29,8 @@
 <div class="container">
 <form method="post" action=""> 
   <input type="hidden" id="emp_id" name="emp_id">
-  <table class="table table-bordered" id="drop-table">
+  <div class="table-wrapper-scroll-y my-custom-scrollbar">
+  <table class="table table-bordered table-scroll mb-0" id="drop-table">
     <thead>
       <tr  class="row100 head">
         <th class="cell100 column1">Employee Name</th>
@@ -69,6 +71,7 @@
 
     </tbody>
   </table>
+</div>
 
 
       <br>

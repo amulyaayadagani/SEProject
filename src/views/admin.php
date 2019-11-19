@@ -11,6 +11,16 @@
   <button type="button" class="close" data-dismiss="alert">x</button>
   <strong>Success! </strong> Product have added to your wishlist.
 </div>-->
+<style>
+.my-custom-scrollbar {
+position: relative;
+height: 250px;
+overflow: auto;
+}
+.table-wrapper-scroll-y {
+display: block;
+}
+</style>
 
 <section class="section testimonial-section" >
   <ul class="nav nav-tabs">

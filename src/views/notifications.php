@@ -1,4 +1,5 @@
 
+
     <div id="success_msg" class="alert alert-success alert-dismissible" style="visibility: hidden" >
 	  <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
 	  <strong>Success!</strong> Messages selected successfully.
@@ -7,7 +8,8 @@
 	  <form id="message-form" action="" method="post">
 	  <input type="hidden" id="msg_del" name="msg_del" >
 	  <button type="submit" id="del_btn" class="btn btn-primary text-white font-weight-bold" style="display: none">Delete</button>
-	  <table class="table table-bordered">
+	  <div class="table-wrapper-scroll-y my-custom-scrollbar">
+	  <table class="table table-bordered table-scroll mb-0">
 	    <thead>
 	      <tr class="row100 head">
 	        <th class="cell100 column1"></th>
@@ -40,7 +42,7 @@
 						echo "<tr class='row100 body'><td>" . $i. "</td><td>" . $row["subject"] . "</td><td>" . $row["date_received"] ."</td><td>". $row["message"]. "</td><td style='display: none'>". "<a id='delete_msg' href='#' >Delete</a>" . "</td><td style='display: none'>" . $row["message_id"] . "</td></tr>";
 						$i++;
 					}
-					echo "</tbody></table></form></div>";
+					echo "</tbody></table></div></form></div>";
 					//echo "<a href='UserReport_Export.php'> Export To Excel </a>";
 				} else { echo "0 results"; }
 			}
@@ -56,6 +58,7 @@
 				        <strong>Success! </strong> Selected message deleted successfully.
 				        </div>';
 				        echo "<script> alert('Selected message deleted successfully!')</script>";
+				        echo '<meta http-equiv="refresh" content="1; URL=index.php?page=admin" />';
 				        $_SESSION["default_tab"] = "notifications";
 				}
 				else{
