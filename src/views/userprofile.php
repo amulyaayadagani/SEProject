@@ -9,7 +9,7 @@
         <form id="profile-form" action="#" method="post" class="bg-white p-md-5 p-4 mb-5 border">
           <div class="row">
             <div class="col-md-4 form-group">
-              <label for="usr_fname">First Name</label>
+              <label for="usr_fname">First Name *</label>
               <input type="text" id="usr_fname" name="usr_fname" value = "<?php echo $fname;?>" class="form-control" required>
             </div>
             <div class="col-md-4 form-group">
@@ -17,13 +17,13 @@
               <input type="text" id="usr_mname" name="usr_mname" value = "<?php echo $mname;?>" class="form-control ">
             </div>
             <div class="col-md-4 form-group">
-              <label for="usr_lname">Last Name</label>
+              <label for="usr_lname">Last Name *</label>
               <input type="text" id="usr_lname" name="usr_lname" value = "<?php echo $lname;?>" class="form-control " required>
             </div>                  
           </div>
           <div class="row">
             <div class="col-md-4 form-radio">
-              <label for="usr_gender" class="radio-label">Gender </label>
+              <label for="usr_gender" class="radio-label">Gender *</label>
               <div class="form-radio-item">
                   <input type="radio" name="usr_gender" id="usr_male" value="Male" >
                   <label for="usr_male">Male</label>
@@ -36,7 +36,7 @@
               </div>
             </div> 
             <div class="col-md-4 form-group">
-                <label for="usr_birth_date">Date of Birth</label>
+                <label for="usr_birth_date">Date of Birth *</label>
                 <div class="field-icon-wrap">
                         <div class="icon"><span class="icon-calendar"></span></div>
                         <input autocomplete="off" required type="text" name="usr_birth_date" id="usr_birth_date" class="form-control" value = "<?php echo $dob;?>">
@@ -45,19 +45,19 @@
                 
             </div>
             <div class="col-md-4 form-group">
-                <label for="u_password">User Password </label>
-                <input type="password" name="u_password" id="u_password" class="form-control" value= "<?php echo $pass; ?>" >
+                <label for="u_password">User Password *</label>
+                <input type="password" name="u_password" id="u_password" required class="form-control" value= "<?php echo $pass; ?>" >
             </div>                    
           </div>
           <div class="row">
             <div class="col-md-12 form-group">
-              <label for="usr_phone">Phone</label>
+              <label for="usr_phone">Phone *</label>
               <input type="text" id="usr_phone" name="usr_phone" value = "<?php echo $contact;?>" class="form-control " required>
             </div> 
           </div>
           <div class="row">
             <div class="col-md-12 form-group">
-              <label for="usr_email">Email</label>
+              <label for="usr_email">Email *</label>
               <input type="email" id="usr_email" name="usr_email" value = "<?php echo $email;?>" class="form-control " required>
             </div>
           </div>

@@ -9,7 +9,7 @@
             <form action="#" method="post" class="bg-white p-md-5 p-4 mb-5 border">
               <div class="row">
                 <div class="col-md-4 form-group">
-                  <label for="emp_fname">First Name</label>
+                  <label for="emp_fname">First Name *</label>
                   <input type="text" id="emp_fname" name="emp_fname" class="form-control " required>
                 </div>
                 <div class="col-md-4 form-group">
@@ -17,13 +17,13 @@
                   <input type="text" id="emp_mname" name="emp_mname" class="form-control ">
                 </div>
                 <div class="col-md-4 form-group">
-                  <label for="emp_lname">Last Name</label>
+                  <label for="emp_lname">Last Name *</label>
                   <input type="text" id="emp_lname" name="emp_lname" class="form-control " required>
                 </div>                  
               </div>
               <div class="row" diabled=true>
                 <div class="col-md-4 form-radio">
-                  <label for="gender" class="radio-label">Gender</label>
+                  <label for="gender" class="radio-label">Gender *</label>
                   <div class="form-radio-item">
                       <input type="radio" name="gender" id="male" value="Male" checked>
                       <label for="male">Male</label>
@@ -36,14 +36,14 @@
                   </div>
                 </div> 
                 <div class="col-md-4 form-group">
-                    <label for="birth_date">DOB</label>
+                    <label for="birth_date">DOB *</label>
                     <div class="field-icon-wrap">
                         <div class="icon"><span class="icon-calendar"></span></div>
                         <input autocomplete="off" required type="text" name="birth_date" id="birth_date" class="form-control">
                      </div>
                 </div>
                 <div class="col-md-4 form-group">
-                    <label for="password">User Password </label>
+                    <label for="password">User Password *</label>
                     <input type="password" name="password" id="password" class="form-control "required>
                 </div>                    
               </div>
@@ -63,7 +63,7 @@
                 </div>
                 </div>
                 <div class="col-md-6 mb-3 mb-md-0">
-                <label for="e_type" >Employee Type</label>
+                <label for="e_type" >Employee Type </label>
                 <div class="field-icon-wrap">
                   <div class="icon"><span class="ion-ios-arrow-down"></span></div>
                   <select name="e_type" id="e_type" class="form-control">
@@ -81,13 +81,13 @@
               </div>
               <div class="row">
                 <div class="col-md-12 form-group">
-                  <label for="email">Email</label>
+                  <label for="email">Email *</label>
                   <input type="email" id="email" name="email" class="form-control" required>
                 </div>
               </div>
               <div class="row">
                 <div class="col-md-12 form-group">
-                  <label for="address">Address :</label>
+                  <label for="address">Address </label>
                   <input type="text" name="address" id="address" class="form-control" />
                 </div>
               </div>
